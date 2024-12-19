@@ -5,50 +5,21 @@ import { Dashboard } from './pages/Dashboard';
 import { Tasks } from './pages/Tasks';
 import { Teams } from './pages/Teams';
 import { Settings } from './pages/Settings';
-import { Login } from './pages/Login';
-import { Signup } from './pages/Signup';
 
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route
-          path="/"
-          element={
-            <Layout>
-              <Dashboard />
-            </Layout>
-          }
-        />
-        <Route
-          path="/tasks"
-          element={
-            <Layout>
-              <Tasks />
-            </Layout>
-          }
-        />
-        <Route
-          path="/teams"
-          element={
-            <Layout>
-              <Teams />
-            </Layout>
-          }
-        />
-        <Route
-          path="/settings"
-          element={
-            <Layout>
-              <Settings />
-            </Layout>
-          }
-        />
-      </Routes>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/tasks" element={<Tasks />} />
+          <Route path="/teams" element={<Teams />} />
+          <Route path="/settings" element={<Settings />} />
+        </Routes>
+      </Layout>
     </Router>
   );
 }
 
 export default App;
+
