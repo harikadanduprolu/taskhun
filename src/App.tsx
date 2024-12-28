@@ -6,36 +6,30 @@ import { Tasks } from './pages/Tasks';
 import { Teams } from './pages/Teams';
 import { Settings } from './pages/Settings';
 import { HomePage } from './pages/HomePage';
+import { LoginPage } from './pages/LoginPage';
+import { SignUpPage } from './pages/SignUpPage';
 
-// Simulate authentication state
-const isLoggedIn = true; // Change this to true to test the logged-in flow
+const isLoggedIn = true; // Simulate authentication state (replace with real logic)
 
 function App() {
   return (
     <Router>
       <Routes>
-        {/* Home page without layout */}
+        {/* Public Routes */}
         <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignUpPage />} />
 
-        {/* Routes that require authentication and layout */}
+        {/* Protected Routes */}
         {isLoggedIn ? (
-          <Route
-            path="*"
-            element={
-              <Layout>
-                <Routes>
-                  <Route path="/dashboard" element={<Dashboard />} />
-                  <Route path="/tasks" element={<Tasks />} />
-                  <Route path="/teams" element={<Teams />} />
-                  <Route path="/settings" element={<Settings />} />
-                  <Route path="*" element={<Navigate to="/dashboard" replace />} />
-                </Routes>
-              </Layout>
-            }
-          />
+          <Route element={<Layout />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/tasks" element={<Tasks />} />
+            <Route path="/teams" element={<Teams />} />
+            <Route path="/settings" element={<Settings />} />
+          </Route>
         ) : (
-          // Redirect to home if not logged in
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="*" element={<Navigate to="/login" replace />} />
         )}
       </Routes>
     </Router>
