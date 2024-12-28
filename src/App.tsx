@@ -8,6 +8,7 @@ import { Settings } from './pages/Settings';
 import { HomePage } from './pages/HomePage';
 import { LoginPage } from './pages/LoginPage';
 import { SignUpPage } from './pages/SignUpPage';
+import { FullPageProfile } from './pages/Profile/FullPageProfile';
 
 const isLoggedIn = true; // Simulate authentication state (replace with real logic)
 
@@ -22,12 +23,15 @@ function App() {
 
         {/* Protected Routes */}
         {isLoggedIn ? (
-          <Route element={<Layout />}>
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/tasks" element={<Tasks />} />
-            <Route path="/teams" element={<Teams />} />
-            <Route path="/settings" element={<Settings />} />
-          </Route>
+          <>
+            <Route path="/profile" element={<FullPageProfile />} />
+            <Route element={<Layout />}>
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/tasks" element={<Tasks />} />
+              <Route path="/teams" element={<Teams />} />
+              <Route path="/settings" element={<Settings />} />
+            </Route>
+          </>
         ) : (
           <Route path="*" element={<Navigate to="/login" replace />} />
         )}

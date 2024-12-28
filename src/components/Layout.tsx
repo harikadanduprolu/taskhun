@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useLocation, Outlet } from 'react-router-dom';
+import { ProfileDropdown } from './ProfileDropdown';
 import {
   LayoutDashboard,
   CheckSquare,
@@ -84,15 +85,8 @@ export function Layout() {
                 <button className="p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none">
                   <Bell className="h-6 w-6" />
                 </button>
-                <div className="ml-3 relative">
-                  <div className="flex items-center">
-                    <img
-                      className="h-8 w-8 rounded-full"
-                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                      alt="User avatar"
-                    />
-                  </div>
-                </div>
+                <ProfileDropdown />
+              
               </div>
             </div>
           </div>
